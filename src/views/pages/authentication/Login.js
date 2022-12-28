@@ -101,10 +101,13 @@ const Login = () => {
             <ToastContent t={t} role={data.role || 'admin'} name={data.fullName || data.username || 'John Doe'} />
           ))
         })
-        .catch(err => setError('loginEmail', {
+        .catch(err => { 
+          console.log(err);
+          return setError('loginEmail', {
             type: 'manual',
             message: err.response.data.error
           })
+        }
         )
     } else {
       for (const key in data) {
