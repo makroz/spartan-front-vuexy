@@ -105,7 +105,7 @@ const Login = () => {
           console.log(err);
           return setError('loginEmail', {
             type: 'manual',
-            message: err.response.data.error
+            message: err.response.data.message || err.message || err.response.data.error  
           })
         }
         )

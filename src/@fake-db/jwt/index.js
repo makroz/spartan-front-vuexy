@@ -58,7 +58,7 @@ const jwtConfig = {
   refreshTokenExpireTime: '10m'
 }
 
-mock.onPost('/jwt/login2').reply(request => {
+mock.onPost('/jwt/login').reply(request => {
   const { email, password } = JSON.parse(request.data)
 
   let error = {
