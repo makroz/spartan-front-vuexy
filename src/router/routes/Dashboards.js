@@ -19,6 +19,7 @@ const Permissions = lazy(() =>
 const AccessControl = lazy(() =>
   import("../../views/extensions/access-control")
 );
+const AccountSettings = lazy(() => import('../../views/pages/account-settings'))
 
 const DashboardRoutes = [
   {
@@ -46,12 +47,17 @@ const DashboardRoutes = [
     path: "/apps/permissions",
   },
   {
+    path: '/pages/account-settings',
+    element: <AccountSettings />
+  },
+  {
     path: "/access-control",
     element: <AccessControl />,
     meta: {
       action: "read",
       resource: "ACL",
     },
+    
   },
 ];
 

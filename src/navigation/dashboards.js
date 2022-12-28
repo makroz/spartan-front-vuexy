@@ -9,9 +9,9 @@ export default [
     id: "dashboards",
     title: "Dashboard",
     icon: <Home size={20} />,
-    action: "read",
-    resource: "ACL",
-    navLink: "/dashboard/ecommerce",
+    action: "read2",
+    resource: "ACL2",
+    navLink: "/dashboard",
   },
   {
     id: "companies",

@@ -19,6 +19,7 @@ import { getRoutes } from './routes'
 // ** Components
 const Error = lazy(() => import('../views/pages/misc/Error'))
 const Login = lazy(() => import('../views/pages/authentication/Login'))
+const Register = lazy(() => import('../views/pages/authentication/Register'))
 const NotAuthorized = lazy(() => import('../views/pages/misc/NotAuthorized'))
 
 const Router = () => {
@@ -47,9 +48,14 @@ const Router = () => {
       children: [{ path: '/login', element: <Login /> }]
     },
     {
-      path: '/auth/not-auth',
+      path: '/register',
       element: <BlankLayout />,
-      children: [{ path: '/auth/not-auth', element: <NotAuthorized /> }]
+      children: [{ path: '/register', element: <Register /> }]
+    },
+    {
+      path: '/misc/not-authorized',
+      element: <BlankLayout />,
+      children: [{ path: '/misc/not-authorized', element: <NotAuthorized /> }]
     },
     {
       path: '*',
