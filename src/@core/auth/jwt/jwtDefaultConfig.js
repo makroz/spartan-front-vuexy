@@ -1,20 +1,28 @@
+/* eslint-disable no-unused-vars */
+
+import themeConfig from "../../../configs/themeConfig";
+let endpoints;
 // ** Auth Endpoints
-export default {
-  loginEndpoint: '/jwt/login',
-  registerEndpoint: '/jwt/register',
-  refreshEndpoint: '/jwt/refresh-token',
-  logoutEndpoint: '/jwt/logout',
-
-  // loginEndpoint: 'http://localhost:8000/api/admin-login',
-  // registerEndpoint: '/jwt/register',
-  // refreshEndpoint: '/jwt/refresh-token',
-  // logoutEndpoint: 'http://localhost:8000/api/logout',
-
-  // ** This will be prefixed in authorization header with token
-  // ? e.g. Authorization: Bearer <token>
-  tokenType: 'Bearer',
-
-  // ** Value of this property will be used as key to store JWT token in storage
-  storageTokenKeyName: 'accessToken',
-  storageRefreshTokenKeyName: 'refreshToken'
+if (themeConfig.mock) {
+  endpoints = {
+    loginEndpoint: "/jwt/login",
+    registerEndpoint: "/jwt/register",
+    refreshEndpoint: "/jwt/refresh-token",
+    logoutEndpoint: "/jwt/logout",
+  };
+} else {
+  endpoints = {
+    loginEndpoint: "admin-login",
+    registerEndpoint: "admin-register",
+    refreshEndpoint: "admin-refresh-token",
+    logoutEndpoint: "admin-logout",
+  };
 }
+
+export default {
+  ...endpoints,
+  baseURL: themeConfig.app.API_URL,
+  tokenType: "Bearer",
+  storageTokenKeyName: "accessToken",
+  storageRefreshTokenKeyName: "refreshToken",
+};

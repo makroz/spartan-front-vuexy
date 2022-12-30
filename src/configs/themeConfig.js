@@ -5,32 +5,34 @@ import logo from "@src/assets/images/logo/logo.png";
 
 //Template config options
 const themeConfig = {
-    app: {
-        appName: "Spartan Affiliate",
-        appLogoImage: logo,
+  app: {
+    appName: "Spartan Affiliate",
+    appLogoImage: logo,
+    mock: false,
+    API_URL: "http://localhost:8000/api",
+  },
+  layout: {
+    isRTL: false,
+    skin: "light", // light, dark, bordered, semi-dark
+    type: "vertical", // vertical, horizontal
+    contentWidth: "boxed", // full, boxed
+    menu: {
+      isHidden: false,
+      isCollapsed: false,
     },
-    layout: {
-        isRTL: false,
-        skin: "light", // light, dark, bordered, semi-dark
-        type: "vertical", // vertical, horizontal
-        contentWidth: "boxed", // full, boxed
-        menu: {
-            isHidden: false,
-            isCollapsed: false,
-        },
-        navbar: {
-            // ? For horizontal menu, navbar type will work for navMenu type
-            type: "floating", // static , sticky , floating, hidden
-            backgroundColor: "white", // BS color options [primary, success, etc]
-        },
-        footer: {
-            type: "sticky", // static, sticky, hidden
-            backgroundColor: "secondary",
-        },
-        customizer: true,
-        scrollTop: true, // Enable scroll to top button
-        toastPosition: "top-right", // top-left, top-center, top-right, bottom-left, bottom-center, bottom-right
+    navbar: {
+      // ? For horizontal menu, navbar type will work for navMenu type
+      type: "floating", // static , sticky , floating, hidden
+      backgroundColor: "white", // BS color options [primary, success, etc]
     },
+    footer: {
+      type: "sticky", // static, sticky, hidden
+      backgroundColor: "secondary",
+    },
+    customizer: true,
+    scrollTop: true, // Enable scroll to top button
+    toastPosition: "top-right", // top-left, top-center, top-right, bottom-left, bottom-center, bottom-right
+  },
 };
 
 export default themeConfig;

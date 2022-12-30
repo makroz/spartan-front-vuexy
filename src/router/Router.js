@@ -1,71 +1,74 @@
 // ** Router imports
-import { lazy } from 'react'
+import { lazy } from "react";
 
 // ** Router imports
-import { useRoutes, Navigate } from 'react-router-dom'
+import { useRoutes, Navigate } from "react-router-dom";
 
 // ** Layouts
-import BlankLayout from '@layouts/BlankLayout'
+import BlankLayout from "@layouts/BlankLayout";
 
 // ** Hooks Imports
-import { useLayout } from '@hooks/useLayout'
+import { useLayout } from "@hooks/useLayout";
 
 // ** Utils
-import { getUserData, getHomeRouteForLoggedInUser } from '../utility/Utils'
+import { getUserData, getHomeRouteForLoggedInUser } from "../utility/Utils";
 
 // ** GetRoutes
-import { getRoutes } from './routes'
+import { getRoutes } from "./routes";
 
 // ** Components
-const Error = lazy(() => import('../views/pages/misc/Error'))
-const Login = lazy(() => import('../views/pages/authentication/Login'))
-const Register = lazy(() => import('../views/pages/authentication/Register'))
-const NotAuthorized = lazy(() => import('../views/pages/misc/NotAuthorized'))
+const Error = lazy(() => import("../views/pages/misc/Error"));
+const Login = lazy(() => import("../views/pages/authentication/Login"));
+const Register = lazy(() => import("../views/pages/authentication/Register"));
+const NotAuthorized = lazy(() => import("../views/pages/misc/NotAuthorized"));
 
 const Router = () => {
   // ** Hooks
-  const { layout } = useLayout()
+  const { layout } = useLayout();
 
-  const allRoutes = getRoutes(layout)
+  const allRoutes = getRoutes(layout);
   const getHomeRoute = () => {
-    const user = getUserData()
+    const user = getUserData();
+    // console.log("====================================");
+    // console.log("gethome", user, getHomeRouteForLoggedInUser(user.rol));
+    // console.log("====================================");
     if (user) {
-      return getHomeRouteForLoggedInUser(user.role)
+      return getHomeRouteForLoggedInUser(user.rol);
     } else {
-      return '/login'
+      return "/login";
     }
-  }
+  };
 
   const routes = useRoutes([
     {
-      path: '/',
+      path: "/",
       index: true,
-      element: <Navigate replace to={getHomeRoute()} />
+      element: <Navigate replace to={getHomeRoute()} />,
     },
     {
-      path: '/login',
+      path: "/login",
       element: <BlankLayout />,
-      children: [{ path: '/login', element: <Login /> }]
+      children: [{ path: "/login", element: <Login /> }],
     },
     {
-      path: '/register',
+      path: "/register",
       element: <BlankLayout />,
-      children: [{ path: '/register', element: <Register /> }]
+      children: [{ path: "/register", element: <Register /> }],
     },
     {
-      path: '/misc/not-authorized',
+      path: "/misc/not-authorized",
       element: <BlankLayout />,
-      children: [{ path: '/misc/not-authorized', element: <NotAuthorized /> }]
+      children: [{ path: "/misc/not-authorized", element: <NotAuthorized /> }],
     },
     {
-      path: '*',
+      path: "*",
       element: <BlankLayout />,
-      children: [{ path: '*', element: <Error /> }]
+      children: [{ path: "*", element: <Error /> }],
     },
-    ...allRoutes
-  ])
+    ...allRoutes,
+  ]);
 
-  return routes
-}
+  return routes;
+};
 
-export default Router
+export default Router;
