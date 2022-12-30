@@ -1,3 +1,4 @@
+/* eslint-disable implicit-arrow-linebreak */
 import axios from "axios";
 import jwtDefaultConfig from "./jwtDefaultConfig";
 

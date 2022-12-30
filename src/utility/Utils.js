@@ -1,3 +1,5 @@
+/* eslint-disable implicit-arrow-linebreak */
+/* eslint-disable no-confusing-arrow */
 import { DefaultRoute } from "../router/routes";
 
 // ** Checks if an object is empty (returns boolean)
